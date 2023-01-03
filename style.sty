@@ -1,0 +1,22 @@
+\ProvidesPackage{style}
+
+\usepackage[utf8]{inputenc} % Ajuste de acentos
+\usepackage[portuguese,brazilian]{babel} % Pacote de linguagem
+\usepackage[lmargin=3cm,tmargin=3cm,rmargin=2cm,bmargin=2cm]{geometry} % Ajuste de margens (normas ABNT)
+\usepackage[T1]{fontenc} % Retira caracteres ocultos (muda o encoding)
+\usepackage[skip=10pt plus1pt, indent=20pt]{parskip} % Ajuda para espaçamento entre parágrafos.
+\usepackage{indentfirst} % Indenta primeiros parágrafos
+
+\linespread{1.1}
+
+% Macro com um argumento
+% Usado para fazer seções sem numeração
+\newcommand{\addsec}[1]{
+  \section*{#1}
+  \markright{}
+  \addcontentsline{toc}{section}{#1}}
+
+\newcommand{\addsubsec}[1]{
+  \subsection*{#1}
+  \markright{}
+  \addcontentsline{toc}{subsection}{#1}}
