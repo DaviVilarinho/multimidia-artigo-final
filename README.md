@@ -12,7 +12,7 @@
   - [ ] Conclusão
 - [ ] Segmentador Semi-automático
   - [ ] Aplicar na imagem selecionada:
-    - [ ] Dull Razor
+    - [X] Dull Razor
     - [ ] Particionar em Superpixel
   - [ ] Com a imagem resultante, criar interface capaz de escolher o(s) superpixel(s) que definem a mancha e a pele (não é necessário precisão tão alta)
   - [ ] Extração de descritores de textura:
