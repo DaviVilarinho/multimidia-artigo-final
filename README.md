@@ -2,8 +2,12 @@
 
 - [ ] Artigo
   - [ ] Introdução
-  - [ ] Relacionados e Estado da Arte
+  - [x] Relacionados e Estado da Arte
   - [ ] Método Proposto
+    - [ ] Pré Processamento
+      - [x] Dull Razor
+      - [ ] Particionar em Superpixel
+    - [ ] fazer o resto
   - [ ] Experimentos
     - [ ] Image Datasets
     - [ ] Evaluation Metrics
