@@ -8,8 +8,8 @@
     - [ ] Image Datasets
     - [ ] Evaluation Metrics
     - [ ] Resultados
-    - [ ] Discussão
-    - [ ] Conclusão
+  - [ ] Discussão
+  - [ ] Conclusão
 - [ ] Segmentador Semi-automático
   - [ ] Aplicar na imagem selecionada:
     - [ ] Dull Razor
