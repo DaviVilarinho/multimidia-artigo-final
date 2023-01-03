@@ -1,2 +1,21 @@
 # multimidia-artigo-final
-Multimídia Artigo UFU
+
+- [ ] Artigo
+  - [ ] Introdução
+  - [ ] Relacionados e Estado da Arte
+  - [ ] Método Proposto
+  - [ ] Experimentos
+    - [ ] Image Datasets
+    - [ ] Evaluation Metrics
+    - [ ] Resultados
+    - [ ] Discussão
+    - [ ] Conclusão
+- [ ] Segmentador Semi-automático
+  - [ ] Aplicar na imagem selecionada:
+    - [ ] Dull Razor
+    - [ ] Particionar em Superpixel
+  - [ ] Com a imagem resultante, criar interface capaz de escolher o(s) superpixel(s) que definem a mancha e a pele (não é necessário precisão tão alta)
+  - [ ] Extração de descritores de textura:
+    - Usar apenas RGB
+    - GLCM e/ou LBP
+  - [ ] Feature Selection em diante: falar com professor e descrever os passos aqui
