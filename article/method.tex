@@ -1,9 +1,27 @@
-\section{Método Proposto}
+O método proposto tem interesse em realizar de forma eficiente um pré-processamento suficiente para
+que a etapa de escolha de superpixel por um profissional capacitado \cite{santos2020skin} possa ser simples e não acarrete
+num alto número de superpixels, de forma a facilitar a análise da imagem por humano e máquina.
 
-\subsection{Pré Processamento}
+Como o objetivo do artigo não é criar um método para segmentação, e sim testar o atual existente, então será descrito à seguir
+as etapas necessárias para geração de material para o teste.
+Na seção de métricas será mais explícito como será a avaliação com os resultados obtidos pela aplicação dos passos propostos.
 
-\subsubsection{Remoção de Cabelos}
+\subsection{Remoção de Cabelos}
 
 Assim como o artigo base \cite{santos2020skin}, utilizou-se uma implementação do \emph{Dull Razor}\cite{dullRazorRepo}, que busca frequência de traços longos, finos e escuros que caracterizam pelos para serem removidos, revertendo às cores medianas ao contorno das áreas removidas.
 
 O código foi reaproveitado e os créditos foram devidamente atribuídos no programa gerado neste artigo.
+
+TODO Avaliar melhor
+
+\subsection{Particionamento em superpixel}
+
+TODO explicar como particionaremos
+
+\subsection{Redução ao Otsu}
+
+O Método de Otsu \cite{otsu1979threshold} é um método muito famoso e simples na segmetanção de imagens. Seu uso se resume à encontrar automaticamente um limiar e dividir os pixels das imagens em primeiro e segundo plano (ou duas regiões).
+
+No caso deste artigo, chama-se Redução ao Otsu a etapa onde a imagem já processada nas demais etapas, em escala de cinza do componente luminosidade do HSI superpixel serão submetidos ao algoritmo que é rápido e encontrará as regiões da lesão em questão.
+
+Como encontra regiões bimodais, o resultado obtido é bem similar ao que o método ABCD busca e é binário como a \emph{``ground truth''} dos datasets, sendo assim a escolha do método tem por objetivo simular a técnica mais rápida e simples, de forma que, ainda na fase de seleção por um especialista, já tenha a máxima chance de encontrar a região em que a lesão se expande.
