@@ -1,25 +1,20 @@
 # multimidia-artigo-final
 
 - [ ] Artigo
-  - [ ] Introdução
+  - [x] Introdução
   - [x] Relacionados e Estado da Arte
   - [ ] Método Proposto
-    - [ ] Pré Processamento
-      - [x] Dull Razor
-      - [ ] Particionar em Superpixel
-    - [ ] fazer o resto
+    - [x] Dull Razor
+    - [ ] Particionar em Superpixel
   - [ ] Experimentos
     - [ ] Image Datasets
-    - [ ] Evaluation Metrics
+    - [ ] Evaluation Metrics (TJI com Otsu)
     - [ ] Resultados
   - [ ] Discussão
   - [ ] Conclusão
-- [ ] Segmentador Semi-automático
-  - [ ] Aplicar na imagem selecionada:
-    - [X] Dull Razor
-    - [ ] Particionar em Superpixel
-  - [ ] Com a imagem resultante, criar interface capaz de escolher o(s) superpixel(s) que definem a mancha e a pele (não é necessário precisão tão alta)
-  - [ ] Extração de descritores de textura:
-    - Usar apenas RGB
-    - GLCM e/ou LBP
-  - [ ] Feature Selection em diante: falar com professor e descrever os passos aqui
+- [ ] Melhorador de Superpixel
+  - [X] Dull Razor
+  - [ ] Particionar em Superpixel
+  - [ ] Otsu
+  - [ ] Criar e Executar Testes
+    - [ ] Deve ser baseado na área overlapping com Otsu

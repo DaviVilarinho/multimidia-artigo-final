@@ -1,0 +1,15 @@
+A pele é um órgão fundamental para a vida humana e, dentre suas funções, destaca-se a protetiva.
+No entanto, na medida em que proporciona ao organismo mecanismos de defesa contra o ambiente externo,
+com o tempo ocorrem surgimento de lesões que podem ser normais ou malignas. Uma dessas é o melanoma.
+É fundamental que pessoas, notando mudanças na pele, novas pintas, verifiquem com um profissional o
+estado de risco que aquilo acarreta para a pessoa. Entretanto, o diagnóstico pode não ser necessariamente
+trivial e, com os avanços tecnológicos, profissionais da área da saúde cada vez mais utilizam de mecanismos
+computacionais para realizá-los, o que configura o \emph{``Computer-Assisted Diagnostic Systems''} (CAD, \emph{Sistemas de Diagnóstico Assistido por Computador}). Para alcançá-los, utiliza-se, principalmente, técnicas de melhoramento de imagem, segmentação, inteligência artificial, assistidas ou não por profissionais na área.
+
+Um dos artigos na área propõe o uso de um método semi-automático \cite{santos2020skin}, ou seja, com apontamento de um profissional das regiões importantes na imagem, de forma a encontrar a forma da lesão em específico e fornecer bordas fiéis aos testes de segmentação pré-existentes em \textit{datasets} públicos.
+
+Este projeto tem por objetivo melhorar a etapa de pré-processamento do artigo \cite{santos2020skin} citado,
+ao alinhar e testar a (menor) configuração de superpixel e analisar quão próximo com métodos de segmentação
+simples e aceitos pela comunidade científica aproxima da \emph{``ground truth''} dos datasets utilizados. A
+premissa é que se tais análises são tão simples e geram resultados bons, um médico também seria capaz de julgar
+facilmente na seleção de superpixel pelas partes mais relevantes, assim diminui seu esforço e maximiza a performance.
