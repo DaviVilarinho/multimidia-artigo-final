@@ -4,12 +4,17 @@
   - [x] Introdução
   - [x] Relacionados e Estado da Arte
   - [ ] Método Proposto
-    - [x] Dull Razor
+    - [X] Dull Razor
     - [ ] Particionar em Superpixel
+    - [X] Redução ao Otsu
   - [ ] Experimentos
     - [ ] Image Datasets
-    - [ ] Evaluation Metrics (TJI com Otsu)
+      - [X] Apontar Qual
+      - [ ] Descrever
+    - [X] Evaluation Metrics (TJI com Otsu)
     - [ ] Resultados
+      - [X] Descrição do Experimento
+      - [ ] Escrever os resultados dos mesmos
   - [ ] Discussão
   - [ ] Conclusão
 - [ ] Melhorador de Superpixel
