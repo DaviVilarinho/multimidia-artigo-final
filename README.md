@@ -19,7 +19,7 @@
   - [ ] Conclusão
 - [ ] Melhorador de Superpixel
   - [X] Dull Razor
-  - [ ] Particionar em Superpixel
-  - [ ] Otsu
+  - [X] Particionar em Superpixel
+  - [X] Otsu
   - [ ] Criar e Executar Testes
     - [ ] Deve ser baseado na área overlapping com Otsu

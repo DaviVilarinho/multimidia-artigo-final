@@ -143,3 +143,4 @@ dmypy.json
 *.cb2
 .*.lb
 *.pdf
+.projectile
