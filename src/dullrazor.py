@@ -19,5 +19,3 @@ def dull_razor_on_cv2_img(img):
     #Replace pixels of the mask
     dst = cv2.inpaint(img,mask,6,cv2.INPAINT_TELEA)   
     return dst
-
-cv2.destroyAllWindows()
