@@ -11,17 +11,15 @@ DATASET_PATH = "/home/dv/files/2022-09_multimedia/datasets/ISBI2016_ISIC_Part1_T
 GROUNDTRUTH_PATH = "/home/dv/files/2022-09_multimedia/datasets/ISBI2016_ISIC_Part1_Test_GroundTruth"
 
 images = listdir(DATASET_PATH)
-images = ["ISIC_0000534.jpg", "ISIC_0011333.jpg"]
-
 
 def get_otsu_thresholded(superpixelized):
     _, thresholded = cv2.threshold(
         superpixelized, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-    return thresholded
+    return (thresholded == 0) * 255
 
 
 def get_chan_vese(superpixilized):
-    return chan_vese(superpixilized, max_num_iter=60)
+    return (chan_vese(superpixilized, max_num_iter=60) == False) * 255
 
 
 with open('jaccard-results.csv', 'w') as csvfile:
@@ -41,10 +39,14 @@ with open('jaccard-results.csv', 'w') as csvfile:
             superpixelized = superpixel.superpixelize_img(
                 hair_removed / 255, superpixel_qty)
 
-            otsu_score = jaccard_score(groundtruth, get_otsu_thresholded(
-                superpixelized), average="micro")  # micro because we want fp sp
-            chan_vese_score = jaccard_score(groundtruth, get_chan_vese(
-                superpixelized) * 255, average="micro")
+            otsu = get_otsu_thresholded(superpixelized)
+            chan_v = get_chan_vese(superpixelized)
+#            cv2.imwrite(f'{image}-otsu.png', otsu)
+#            cv2.imwrite(f'{image}-chan.png', chan_v)
+            # micro because we want fp sp
+            otsu_score = jaccard_score(groundtruth, otsu, average="micro")
+            chan_vese_score = jaccard_score(
+                groundtruth, chan_v, average="micro")
             print(f'Writing {image} results for {superpixel_qty} superpixels')
             results_writer.writerow(
                 [image, superpixel_qty, otsu_score, chan_vese_score, otsu_score * chan_vese_score])
