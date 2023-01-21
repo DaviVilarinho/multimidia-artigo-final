@@ -1,6 +1,7 @@
 from sklearn.metrics import jaccard_score
 import dullrazor
 import superpixel
+import cProfile
 from skimage import io
 from os import listdir
 from skimage.segmentation import chan_vese
@@ -10,7 +11,6 @@ import csv
 DATASET_PATH = "/home/dv/files/2022-09_multimedia/datasets/ISBI2016_ISIC_Part1_Test_Data"
 GROUNDTRUTH_PATH = "/home/dv/files/2022-09_multimedia/datasets/ISBI2016_ISIC_Part1_Test_GroundTruth"
 
-images = listdir(DATASET_PATH)
 
 def get_otsu_thresholded(superpixelized):
     _, thresholded = cv2.threshold(
@@ -22,31 +22,39 @@ def get_chan_vese(superpixilized):
     return (chan_vese(superpixilized, max_num_iter=60) == False) * 255
 
 
-with open('jaccard-results.csv', 'w') as csvfile:
-    results_writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
+def main():
+    images = listdir(DATASET_PATH)[0:10]
 
-    results_writer.writerow(
-        ["Image", "Superpixel amount", "Otsu JAC", "Chan-vese JAC", "JAC Product"])
+    with open('jaccard-results.csv', 'w') as csvfile:
+        results_writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
 
-    for image in images:
-        print(f'Analyzing {image}')
-        pic_from_disk = io.imread(f'{DATASET_PATH}/{image}')
-        groundtruth = io.imread(
-            f'{GROUNDTRUTH_PATH}/{image.split(".")[0]}_Segmentation.png')
-        hair_removed = dullrazor.dull_razor_on_cv2_img(pic_from_disk)
-        for superpixel_qty in range(200, 1600, 50):
-            print(f'Analyzing {image} for {superpixel_qty} superpixels')
-            superpixelized = superpixel.superpixelize_img(
-                hair_removed / 255, superpixel_qty)
+        results_writer.writerow(
+            ["Image", "Superpixel amount", "Otsu JAC", "Chan-vese JAC", "JAC Product"])
 
-            otsu = get_otsu_thresholded(superpixelized)
-            chan_v = get_chan_vese(superpixelized)
-#            cv2.imwrite(f'{image}-otsu.png', otsu)
-#            cv2.imwrite(f'{image}-chan.png', chan_v)
-            # micro because we want fp sp
-            otsu_score = jaccard_score(groundtruth, otsu, average="micro")
-            chan_vese_score = jaccard_score(
-                groundtruth, chan_v, average="micro")
-            print(f'Writing {image} results for {superpixel_qty} superpixels')
-            results_writer.writerow(
-                [image, superpixel_qty, otsu_score, chan_vese_score, otsu_score * chan_vese_score])
+        for image in images:
+            print(f'Analyzing {image}')
+            pic_from_disk = io.imread(f'{DATASET_PATH}/{image}')
+            groundtruth = io.imread(
+                f'{GROUNDTRUTH_PATH}/{image.split(".")[0]}_Segmentation.png')
+            hair_removed = dullrazor.dull_razor_on_cv2_img(pic_from_disk)
+            for superpixel_qty in range(200, 1600, 50):
+                print(f'Analyzing {image} for {superpixel_qty} superpixels')
+                superpixelized = superpixel.superpixelize_img(
+                    hair_removed / 255, superpixel_qty)
+
+                otsu = get_otsu_thresholded(superpixelized)
+                chan_v = get_chan_vese(superpixelized)
+    #            cv2.imwrite(f'{image}-otsu.png', otsu)
+    #            cv2.imwrite(f'{image}-chan.png', chan_v)
+                # micro because we want fp sp
+                otsu_score = jaccard_score(groundtruth, otsu, average="micro")
+                chan_vese_score = jaccard_score(
+                    groundtruth, chan_v, average="micro")
+                print(
+                    f'Writing {image} results for {superpixel_qty} superpixels')
+                results_writer.writerow(
+                    [image, superpixel_qty, otsu_score, chan_vese_score, otsu_score * chan_vese_score])
+
+
+if __name__ == "__main__":
+    cProfile.run('main()')
