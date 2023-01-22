@@ -12,7 +12,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-jaccard_results = pd.read_csv("jaccard-results.csv")
+jaccard_results = pd.read_csv("jaccard-results-combined.csv")
 jaccard_results.columns = jaccard_results.columns.str.replace(" ", "_")
 
 basic_tendencies = jaccard_results.describe()
