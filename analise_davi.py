@@ -51,7 +51,7 @@ desvio_padrao_por_superpixel.plot(
     title="Desvio Padrão dos Resultados Por Superpixel")
 plt.show()
 # a partir de 1000 existe um plateau de desvio padrão
-# mas que já é alcançado por volta do 450
+# mas o valor já é alcançado por volta do 450
 
 
 """
