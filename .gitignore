@@ -144,3 +144,6 @@ dmypy.json
 .*.lb
 *.pdf
 .projectile
+references/
+*output*/
+*output.zip
