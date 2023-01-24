@@ -8,8 +8,8 @@ from skimage.segmentation import chan_vese
 import cv2
 import csv
 
-DATASET_PATH = "datasets/ISBI2016_ISIC_Part1_Training_Data"
-GROUNDTRUTH_PATH = "datasets/ISBI2016_ISIC_Part1_Training_GroundTruth"
+DATASET_PATH = "datasets/test_data"
+GROUNDTRUTH_PATH = "datasets/test_ground_truths"
 
 
 def get_otsu_thresholded(superpixelized):
